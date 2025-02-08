@@ -25,7 +25,7 @@
     - [x] Create login form
     - [x] Create register form
     - [x] Logout functionality
-  - [ ] Add user roles and permissions
+  - [ ] [Add user roles and permissions](./User-Roles-Permissions.md)
 
 ## Data Model Design
 
