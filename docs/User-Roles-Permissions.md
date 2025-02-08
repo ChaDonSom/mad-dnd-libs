@@ -78,4 +78,104 @@ Temporary accounts expire after the game session ends.
 
 During or after the game, offer temporary users the option to convert to permanent accounts.  
 If they choose to convert, they can provide email/password to keep their game history.  
-If they decline, their temporary account data is cleaned up after session expiry.
+If they decline, they can still access their previous games via the temporary ID, but cannot host games. If their session expires, they lose access to the game history.
+
+## 6. Implementation Plan
+
+### 6.1 Database Schema Updates
+
+1. Create new tables:
+   - `roles`: Store role definitions
+   - `permissions`: Store individual permissions
+   - `role_permissions`: Junction table for role-permission relationships
+   - `user_roles`: Junction table for user-role relationships
+
+> **Note:** Roles are essentially named groups of permissions, making it easier for humans (developers, administrators) to understand and manage user access. They provide a higher-level abstraction over individual permissions.
+
+### 6.2 Backend Implementation Steps
+
+1. Create Models:
+
+   - Role model with relationships to permissions and users
+   - Permission model with relationship to roles
+   - Update User model with role relationships
+
+2. Create Middleware:
+
+   - Role-based middleware for route protection
+   - Permission-based middleware for granular control
+
+3. Update Authentication System:
+
+   - Modify registration to assign default role
+   - Include roles/permissions in auth tokens
+   - Add role checks to existing endpoints
+
+4. Create Role Management API:
+   - CRUD endpoints for roles (admin only)
+   - CRUD endpoints for permissions (admin only)
+   - CRUD to be implemented by Laravel Orion
+   - Endpoints for role assignment
+
+### 6.3 Frontend Implementation Steps
+
+1. Update Auth Store:
+
+   - Add role/permission state management
+   - Add helper methods for permission checking
+
+2. Add Role-based UI Elements:
+
+   - Show/hide components based on permissions
+   - Add admin interface for role management
+   - Update navigation based on user role
+
+3. Game Room Updates:
+   - Implement host controls
+   - Add player management interface
+   - Add role transfer functionality
+
+### 6.4 Testing Strategy
+
+1. Unit Tests:
+
+   - Role and permission model tests
+   - Middleware tests
+   - Authorization helper tests
+
+2. Integration Tests:
+
+   - Role-based access control
+   - Permission inheritance
+   - Role assignment flows
+
+3. E2E Tests:
+
+   - Complete user journeys for each role
+   - Role transition scenarios
+   - Permission boundary cases
+
+4. Testing Tools:
+
+   - Laravel Dusk for E2E testing
+   - Pest for unit and integration tests
+
+### 6.5 Deployment Plan
+
+1. Database Migration:
+
+   - Create new tables
+   - Add indexes for performance
+   - Seed initial roles and permissions
+
+2. Phased Rollout:
+
+   - Deploy database changes
+   - Deploy backend updates
+   - Deploy frontend updates
+   - Enable features progressively
+
+3. Monitoring:
+   - Add role-based analytics
+   - Track permission usage
+   - Monitor performance impact
