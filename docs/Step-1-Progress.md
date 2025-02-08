@@ -22,8 +22,8 @@
   - [x] Create protected routes
   - [x] Basic NPM script to run both servers concurrently
   - [ ] Make basic frontend UI for login/register
-    - [ ] Create login form
-    - [ ] Create register form
+    - [x] Create login form
+    - [x] Create register form
     - [ ] Logout functionality
   - [ ] Add user roles and permissions
 

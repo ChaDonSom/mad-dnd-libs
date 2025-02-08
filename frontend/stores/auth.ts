@@ -17,12 +17,19 @@ export const useAuthStore = defineStore("auth", {
     token: null,
   }),
 
+  getters: {
+    isAuthenticated(): boolean {
+      return !!this.token;
+    },
+  },
+
   actions: {
     async login(email: string, password: string) {
       try {
         const response = await fetch("http://localhost:8000/api/v1/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
+          credentials: "include",
           body: JSON.stringify({ email, password }),
         });
 
@@ -48,6 +55,7 @@ export const useAuthStore = defineStore("auth", {
         const response = await fetch("http://localhost:8000/api/v1/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
+          credentials: "include",
           body: JSON.stringify({
             name,
             email,
