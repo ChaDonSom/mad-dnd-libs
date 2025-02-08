@@ -1,8 +1,8 @@
-# Mad-DnD-Libs: The Chaotic Quest - Design Requirements Document
+# [Readme](../README.md) / Mad-DnD-Libs: The Chaotic Quest - Design Requirements Document
 
 ## 1. Overview
 
-MadDragons: The Chaotic Quest is a multiplayer web-based party game where players collaboratively create absurd characters, weapons, and attacks using a madlibs-style input system. The game balances randomness and player agency, incorporating voting-based humor mechanics that impact battle effectiveness. This document outlines the complete technical and gameplay requirements necessary to implement the game.
+Mad DnD Libs: The Chaotic Quest is a multiplayer web-based party game where players collaboratively create absurd characters, weapons, and attacks using a madlibs-style input system. The game balances randomness and player agency, incorporating voting-based humor mechanics that impact battle effectiveness. This document outlines the complete technical and gameplay requirements necessary to implement the game.
 
 ## 2. Core Game Loop
 
@@ -107,3 +107,5 @@ MadDragons: The Chaotic Quest is a multiplayer web-based party game where player
 \---
 
 This document serves as a starting point for implementation. We should refine and expand it as more details emerge during development.
+
+## [Implementation Plan](./Implementation-Plan.md)

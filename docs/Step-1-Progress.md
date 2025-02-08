@@ -1,4 +1,4 @@
-# [Implementation](./Implementation-Plan.md) Step 1: Project Setup Progress
+# [Implementation](./Implementation-Plan.md) / Step 1: Project Setup Progress
 
 ## Nuxt.js Project Initialization
 
@@ -21,10 +21,10 @@
   - [x] Set up authentication middleware
   - [x] Create protected routes
   - [x] Basic NPM script to run both servers concurrently
-  - [ ] Make basic frontend UI for login/register
+  - [x] Make basic frontend UI for login/register
     - [x] Create login form
     - [x] Create register form
-    - [ ] Logout functionality
+    - [x] Logout functionality
   - [ ] Add user roles and permissions
 
 ## Data Model Design

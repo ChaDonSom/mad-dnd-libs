@@ -1,4 +1,4 @@
-# Mad D&D Libs Implementation Plan
+# [Requirements](./MadDndLibs_Requirements.md) / Implementation Plan
 
 ## Technical Stack
 
@@ -12,7 +12,7 @@
 
 ## Step-by-Step Implementation
 
-### 1. Project Setup (Week 1): [Progress](./Step-1-Progress.md)
+### 1. [Project Setup (Week 1):](./Step-1-Progress.md)
 
 - [x] Initialize Nuxt.js project
 - [ ] Set up Laravel backend

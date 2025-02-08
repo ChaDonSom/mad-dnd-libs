@@ -69,6 +69,8 @@ Mad DnD Libs: The Chaotic Quest is a multiplayer web-based party game where play
 
 Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
 
+Review the [Requirements](docs/MadDndLibs_Requirements.md) and [Implementation Plan](docs/Implementation-Plan.md) for more details.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
