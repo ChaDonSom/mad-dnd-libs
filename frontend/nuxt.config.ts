@@ -14,20 +14,32 @@ export default defineNuxtConfig({
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
 
-  css: ["vuetify/lib/styles/main.sass"],
+  css: ["vuetify/lib/styles/main.css", "@mdi/font/css/materialdesignicons.css"],
   plugins: [],
   components: true,
-  buildModules: ["@nuxtjs/vuetify"],
   modules: [
     "@nuxtjs/tailwindcss",
-    "vuetify-nuxt-module",
     "@pinia/nuxt",
     "@vueuse/nuxt",
     "@formkit/auto-animate",
+    "vuetify-nuxt-module",
   ],
 
   vuetify: {
-    // Custom options for Vuetify
+    moduleOptions: {
+      styles: true, // Remove the configFile option
+    },
+    vuetifyOptions: {
+      defaults: {
+        VBtn: {
+          rounded: "pill",
+          style: "text-transform: none;",
+        },
+      },
+      theme: {
+        defaultTheme: "light",
+      },
+    },
   },
 
   build: {
@@ -40,6 +52,4 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: "2025-02-07",
-
-  devtools: true,
 });
