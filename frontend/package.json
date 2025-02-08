@@ -1,0 +1,21 @@
+{
+  "name": "mad-dnd-libs",
+  "version": "1.0.0",
+  "description": "A multiplayer web-based party game where players collaboratively create absurd characters, weapons, and attacks using a madlibs-style input system.",
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^3.0.0",
+    "vuetify": "^3.0.0",
+    "vueuse": "^8.0.0"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.0"
+  }
+}
