@@ -15,11 +15,11 @@
 - [x] Set up basic API routes (examples)
   - [x] GET /api/v1/examples/templates
   - [x] GET /api/v1/examples/story/{id}
-- [ ] Implement basic authentication and authorization
-  - [ ] Install and configure Laravel Sanctum
-  - [ ] Create login/register endpoints
-  - [ ] Set up authentication middleware
-  - [ ] Create protected routes
+- [x] Implement basic authentication and authorization
+  - [x] Install and configure Laravel Sanctum
+  - [x] Create login/register endpoints
+  - [x] Set up authentication middleware
+  - [x] Create protected routes
   - [ ] Add user roles and permissions
 
 ## Data Model Design
