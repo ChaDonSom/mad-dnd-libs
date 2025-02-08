@@ -1,19 +1,4 @@
 export default defineNuxtConfig({
-  head: {
-    title: "Mad DnD Libs: The Chaotic Quest",
-    meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      {
-        hid: "description",
-        name: "description",
-        content:
-          "A multiplayer web-based party game where players create absurd characters and weapons.",
-      },
-    ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
-  },
-
   css: ["vuetify/lib/styles/main.css", "@mdi/font/css/materialdesignicons.css"],
   plugins: [],
   components: true,
@@ -27,7 +12,7 @@ export default defineNuxtConfig({
 
   vuetify: {
     moduleOptions: {
-      styles: true, // Remove the configFile option
+      styles: true,
     },
     vuetifyOptions: {
       defaults: {
@@ -36,8 +21,25 @@ export default defineNuxtConfig({
           style: "text-transform: none;",
         },
       },
+      display: {
+        mobileBreakpoint: "sm",
+      },
       theme: {
-        defaultTheme: "light",
+        defaultTheme: "light", // Set a default theme
+        themes: {
+          light: {
+            colors: {
+              primary: "#1867C0",
+              secondary: "#5CBBF6",
+            },
+          },
+          dark: {
+            colors: {
+              primary: "#1867C0",
+              secondary: "#5CBBF6",
+            },
+          },
+        },
       },
     },
   },
@@ -46,10 +48,29 @@ export default defineNuxtConfig({
     transpile: ["vuetify"],
   },
 
-  server: {
-    port: 3000, // default: 3000
-    host: "0.0.0.0", // default: localhost
-  },
-
   compatibilityDate: "2025-02-07",
+
+  app: {
+    head: {
+      title: "Mad DnD Libs: The Chaotic Quest",
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        {
+          hid: "description",
+          name: "description",
+          content:
+            "A multiplayer web-based party game where players create absurd characters and weapons.",
+        },
+        {
+          name: "color-scheme",
+          content: "light dark",
+        },
+      ],
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      htmlAttrs: {
+        "data-color-scheme": "light dark",
+      },
+    },
+  },
 });
