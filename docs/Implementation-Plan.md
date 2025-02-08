@@ -3,7 +3,7 @@
 ## Technical Stack
 
 - Frontend: Nuxt.js (Vue 3)
-- UI Framework: Vuetify
+- UI Framework: Vuetify, Tailwind CSS
 - Animation: VueUse Motion
 - Backend: Laravel (PHP)
 - Database: MySQL
