@@ -16,6 +16,7 @@
 
 - [x] Initialize Nuxt.js project
 - [ ] Set up Laravel backend
+- [ ] Design data models and database schema
 - [ ] Configure WebSocket server
 - [ ] Set up CI/CD pipeline
 - [ ] Configure development environment

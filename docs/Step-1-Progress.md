@@ -22,6 +22,15 @@
   - [ ] Create protected routes
   - [ ] Add user roles and permissions
 
+## Data Model Design
+
+- [ ] Design core data models
+  - [ ] User model and authentication
+  - [ ] Hash out rest of the models
+- [ ] Define relationships between models
+- [ ] Create database schema diagrams
+- [ ] Review and validate data structure
+
 ## WebSocket Server Configuration
 
 - [ ] Chose WebSocket server implementation (e.g., Laravel Echo Server - Laravel Reverb)
