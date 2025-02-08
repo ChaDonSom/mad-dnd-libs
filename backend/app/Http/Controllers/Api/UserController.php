@@ -10,6 +10,14 @@ class UserController extends ApiController
 
     public function includes(): array
     {
-        return ['roles'];
+        return ['roles', 'permissions'];
+    }
+
+    protected function beforeSave($request, $user)
+    {
+        if ($request->has('roles')) {
+            $user->roles()->sync($request->input('roles'));
+        }
+        return $user;
     }
 }
