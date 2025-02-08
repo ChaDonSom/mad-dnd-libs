@@ -1,6 +1,21 @@
 <script setup lang="ts">
+import { usePreferredDark } from "@vueuse/core";
+import { useTheme } from "vuetify";
+
 const auth = useAuthStore();
 const router = useRouter();
+
+const prefersDark = usePreferredDark();
+const theme = useTheme();
+
+// Set theme based on system preference
+watch(
+  prefersDark,
+  (newValue) => {
+    theme.global.name.value = newValue ? "dark" : "light";
+  },
+  { immediate: true },
+);
 
 async function handleLogout() {
   const success = await auth.logout();
@@ -11,7 +26,7 @@ async function handleLogout() {
 </script>
 
 <template>
-  <VApp>
+  <div>
     <VAppBar>
       <VAppBarTitle>Mad D&D Libs</VAppBarTitle>
       <VSpacer />
@@ -27,5 +42,5 @@ async function handleLogout() {
     <VMain>
       <slot />
     </VMain>
-  </VApp>
+  </div>
 </template>
