@@ -1,7 +1,8 @@
 {
-  "name": "nuxt-app",
+  "name": "mad-dnd-libs-frontend",
   "private": true,
   "type": "module",
+  "version": "v0.0.1-0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
