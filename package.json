@@ -1,0 +1,12 @@
+{
+  "name": "mad-dnd-libs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"cd frontend && npm run dev\" \"cd backend && php artisan serve\"",
+    "install-all": "cd frontend && npm install && cd ../backend && composer install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

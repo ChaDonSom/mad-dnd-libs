@@ -64,6 +64,9 @@
 ### 7. UI/UX Development (Week 5)
 
 - [ ] Design mobile-first interface
+  - [ ] Theming - vuetify dark and light mode system
+  - [ ] Rounded corners
+  - [ ] Animations, fonts, color theme, UI design
 - [ ] Create TV display mode
 - [ ] Implement responsive layouts
 - [ ] Add game state visualizations

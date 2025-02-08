@@ -9,7 +9,7 @@
 
 ## Laravel Backend Setup
 
-- [ ] In the `backend` directory:
+- [x] In the `backend` directory:
 - [x] Created Laravel project using Composer
 - [x] Configured database connection (MySQL; Defaulted to SQLite, let's try it for now)
 - [x] Set up basic API routes (examples)
@@ -20,7 +20,8 @@
   - [x] Create login/register endpoints
   - [x] Set up authentication middleware
   - [x] Create protected routes
-  - [ ] Make frontend UI for login/register
+  - [x] Basic NPM script to run both servers concurrently
+  - [ ] Make basic frontend UI for login/register
     - [ ] Create login form
     - [ ] Create register form
     - [ ] Logout functionality

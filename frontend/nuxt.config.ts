@@ -20,6 +20,22 @@ export default defineNuxtConfig({
           rounded: "pill",
           style: "text-transform: none;",
         },
+        VTextField: {
+          variant: "outlined",
+          rounded: "pill",
+        },
+        VCard: {
+          rounded: "xl",
+        },
+        VDialog: {
+          rounded: "xl",
+        },
+        VChip: {
+          rounded: "pill",
+        },
+        VIcon: {
+          iconfont: "mdi",
+        },
       },
       display: {
         mobileBreakpoint: "sm",
