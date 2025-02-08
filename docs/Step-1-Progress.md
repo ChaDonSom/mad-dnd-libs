@@ -1,4 +1,4 @@
-# Step 1: Project Setup Progress
+# [Implementation](./Implementation-Plan.md) Step 1: Project Setup Progress
 
 ## Nuxt.js Project Initialization
 

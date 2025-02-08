@@ -12,9 +12,9 @@
 
 ## Step-by-Step Implementation
 
-### 1. Project Setup (Week 1)
+### 1. Project Setup (Week 1): [Progress](./Step-1-Progress.md)
 
-- [ ] Initialize Nuxt.js project
+- [x] Initialize Nuxt.js project
 - [ ] Set up Laravel backend
 - [ ] Configure WebSocket server
 - [ ] Set up CI/CD pipeline
