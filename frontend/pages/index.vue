@@ -1,12 +1,3 @@
-<template>
-  <div>
-    <h1>Welcome to Mad DnD Libs: The Chaotic Quest!</h1>
-    <p>Join us in creating absurd characters and battling in a hilarious multiplayer experience.</p>
-    <NuxtLink to="/game">Start Game</NuxtLink>
-    <NuxtPage />
-  </div>
-</template>
-
 <script>
 import { NuxtLink, NuxtPage } from "#components"
 
@@ -27,8 +18,11 @@ export default {
 }
 </script>
 
-<style scoped>
-h1 {
-  color: #ff6347;
-}
-</style>
+<template>
+  <div class="p-4">
+    <h1>Welcome to Mad DnD Libs: The Chaotic Quest!</h1>
+    <p>Join us in creating absurd characters and battling in a hilarious multiplayer experience.</p>
+    <NuxtLink to="/game">Start Game</NuxtLink>
+    <NuxtPage />
+  </div>
+</template>

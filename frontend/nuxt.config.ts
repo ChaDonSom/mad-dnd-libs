@@ -17,7 +17,7 @@ export default {
   plugins: [],
   components: true,
   buildModules: ["@nuxtjs/vuetify"],
-  modules: ["@nuxtjs/tailwindcss", "vuetify-nuxt-module"],
+  modules: ["@nuxtjs/tailwindcss", "vuetify-nuxt-module", "@pinia/nuxt", "@vueuse/nuxt", "@formkit/auto-animate"],
 
   vuetify: {
     // Custom options for Vuetify
