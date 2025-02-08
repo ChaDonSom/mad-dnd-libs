@@ -1,4 +1,4 @@
-export default {
+export default defineNuxtConfig({
   head: {
     title: "Mad DnD Libs: The Chaotic Quest",
     meta: [
@@ -7,24 +7,31 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: "A multiplayer web-based party game where players create absurd characters and weapons.",
+        content:
+          "A multiplayer web-based party game where players create absurd characters and weapons.",
       },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
 
-  css: [],
+  css: ["vuetify/lib/styles/main.sass"],
   plugins: [],
   components: true,
   buildModules: ["@nuxtjs/vuetify"],
-  modules: ["@nuxtjs/tailwindcss", "vuetify-nuxt-module", "@pinia/nuxt", "@vueuse/nuxt", "@formkit/auto-animate"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "vuetify-nuxt-module",
+    "@pinia/nuxt",
+    "@vueuse/nuxt",
+    "@formkit/auto-animate",
+  ],
 
   vuetify: {
     // Custom options for Vuetify
   },
 
   build: {
-    // Build configuration
+    transpile: ["vuetify"],
   },
 
   server: {
@@ -35,4 +42,4 @@ export default {
   compatibilityDate: "2025-02-07",
 
   devtools: true,
-}
+});

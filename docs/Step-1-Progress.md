@@ -20,6 +20,10 @@
   - [x] Create login/register endpoints
   - [x] Set up authentication middleware
   - [x] Create protected routes
+  - [ ] Make frontend UI for login/register
+    - [ ] Create login form
+    - [ ] Create register form
+    - [ ] Logout functionality
   - [ ] Add user roles and permissions
 
 ## Data Model Design
