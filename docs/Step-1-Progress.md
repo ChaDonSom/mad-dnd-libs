@@ -11,7 +11,7 @@
 
 - [ ] In the `backend` directory:
 - [x] Created Laravel project using Composer
-- [ ] Configured database connection (MySQL; Defaulted to SQLite, let's try it for now)
+- [x] Configured database connection (MySQL; Defaulted to SQLite, let's try it for now)
 - [ ] Set up basic API routes
 - [ ] Implemented basic authentication and authorization mechanisms
 
