@@ -10,9 +10,10 @@
 ## Laravel Backend Setup
 
 - [ ] In the `backend` directory:
-- [ ] Created Laravel project using Composer
-- [ ] Configured database connection (MySQL)
+- [x] Created Laravel project using Composer
+- [ ] Configured database connection (MySQL; Defaulted to SQLite, let's try it for now)
 - [ ] Set up basic API routes
+- [ ] Implemented basic authentication and authorization mechanisms
 
 ## WebSocket Server Configuration
 
