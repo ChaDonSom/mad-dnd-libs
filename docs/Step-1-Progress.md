@@ -2,12 +2,14 @@
 
 ## Nuxt.js Project Initialization
 
+- [x] In the `frontend` directory:
 - [x] Initialized Nuxt.js project using `npx nuxi init`
 - [x] Configured basic project structure
 - [x] Installed core dependencies (Vuetify, VueUse Motion)
 
 ## Laravel Backend Setup
 
+- [ ] In the `backend` directory:
 - [ ] Created Laravel project using Composer
 - [ ] Configured database connection (MySQL)
 - [ ] Set up basic API routes
