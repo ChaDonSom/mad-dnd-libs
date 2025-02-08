@@ -12,19 +12,27 @@ export default {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
-  css: ["@/assets/styles/main.css"],
+
+  css: [],
   plugins: [],
   components: true,
   buildModules: ["@nuxtjs/vuetify"],
-  modules: [],
+  modules: ["@nuxtjs/tailwindcss", "vuetify-nuxt-module"],
+
   vuetify: {
     // Custom options for Vuetify
   },
+
   build: {
     // Build configuration
   },
+
   server: {
     port: 3000, // default: 3000
     host: "0.0.0.0", // default: localhost
   },
+
+  compatibilityDate: "2025-02-07",
+
+  devtools: true,
 }
