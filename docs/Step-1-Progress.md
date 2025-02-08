@@ -12,8 +12,15 @@
 - [ ] In the `backend` directory:
 - [x] Created Laravel project using Composer
 - [x] Configured database connection (MySQL; Defaulted to SQLite, let's try it for now)
-- [ ] Set up basic API routes
-- [ ] Implemented basic authentication and authorization mechanisms
+- [x] Set up basic API routes (examples)
+  - [x] GET /api/v1/examples/templates
+  - [x] GET /api/v1/examples/story/{id}
+- [ ] Implement basic authentication and authorization
+  - [ ] Install and configure Laravel Sanctum
+  - [ ] Create login/register endpoints
+  - [ ] Set up authentication middleware
+  - [ ] Create protected routes
+  - [ ] Add user roles and permissions
 
 ## WebSocket Server Configuration
 
