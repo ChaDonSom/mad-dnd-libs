@@ -38,6 +38,31 @@ yarn dev
 bun run dev
 ```
 
+## Linting
+
+Lint the project:
+
+```bash
+# npm
+npm run lint
+```
+
+Fix linting issues:
+
+```bash
+# npm
+npm run lint:fix
+```
+
+## Formatting
+
+Format the project:
+
+```bash
+# npm
+npm run format
+```
+
 ## Production
 
 Build the application for production:
