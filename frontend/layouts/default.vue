@@ -4,6 +4,7 @@ import { useTheme } from "vuetify";
 
 const auth = useAuthStore();
 const router = useRouter();
+const config = useRuntimeConfig();
 
 const prefersDark = usePreferredDark();
 const theme = useTheme();
@@ -43,6 +44,7 @@ async function handleLogout() {
 
     <VMain>
       <slot />
+      <AuthDebug v-if="config.public.nodeEnv === 'development'" />
     </VMain>
   </VApp>
 </template>

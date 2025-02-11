@@ -7,10 +7,22 @@ const email = ref("");
 const password = ref("");
 const passwordConfirmation = ref("");
 const loading = ref(false);
+const errorMessage = ref("");
+const validationErrors = ref<Record<string, string[]>>({});
 
 async function handleRegister() {
   loading.value = true;
-  const success = await auth.register(
+  errorMessage.value = "";
+  validationErrors.value = {};
+  
+  // Basic validation
+  if (password.value !== passwordConfirmation.value) {
+    errorMessage.value = "Passwords do not match";
+    loading.value = false;
+    return;
+  }
+
+  const result = await auth.register(
     name.value,
     email.value,
     password.value,
@@ -18,10 +30,13 @@ async function handleRegister() {
   );
   loading.value = false;
 
-  if (success) {
+  if (result === true) {
     router.push("/");
   } else {
-    alert("Registration failed");
+    errorMessage.value = result.message;
+    if (result.errors) {
+      validationErrors.value = result.errors;
+    }
   }
 }
 </script>
@@ -31,19 +46,42 @@ async function handleRegister() {
     <VCard width="400px" class="pa-4">
       <VCardTitle class="text-center">Register</VCardTitle>
       <VForm @submit.prevent="handleRegister">
-        <VTextField v-model="name" label="Name" required />
-        <VTextField v-model="email" label="Email" type="email" required />
+        <VAlert
+          v-if="errorMessage"
+          type="error"
+          variant="tonal"
+          class="mb-4"
+          closable
+          @click:close="errorMessage = ''"
+        >
+          {{ errorMessage }}
+        </VAlert>
+        <VTextField 
+          v-model="name" 
+          label="Name" 
+          required
+          :error-messages="validationErrors.name"
+        />
+        <VTextField 
+          v-model="email" 
+          label="Email" 
+          type="email" 
+          required
+          :error-messages="validationErrors.email"
+        />
         <VTextField
           v-model="password"
           label="Password"
           type="password"
           required
+          :error-messages="validationErrors.password"
         />
         <VTextField
           v-model="passwordConfirmation"
           label="Confirm Password"
           type="password"
           required
+          :error-messages="validationErrors.password_confirmation"
         />
         <VBtn
           type="submit"

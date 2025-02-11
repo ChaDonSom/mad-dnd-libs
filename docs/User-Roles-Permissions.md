@@ -107,15 +107,22 @@ If they decline, they can still access their previous games via the temporary ID
 
 3. Update Authentication System:
 
-   - [ ] Modify registration to assign default role
-   - [ ] Include roles/permissions in auth tokens
-   - [ ] Add role checks to existing endpoints
+   - [x] Modify registration to assign default role
+   - [x] Include roles/permissions in auth tokens
+   - [x] Add role checks to existing endpoints
 
 4. Create Role Management API:
-   - [ ] CRUD endpoints for roles (admin only)
-   - [ ] CRUD endpoints for permissions (admin only)
-   - [ ] CRUD to be implemented by Laravel Orion
-   - [ ] Endpoints for role assignment
+   - [x] CRUD endpoints for roles (admin only)
+   - [x] CRUD endpoints for permissions (admin only)
+   - [x] CRUD to be implemented by Laravel Orion
+   - [x] Endpoints for role assignment
+
+> **Note:** Laravel Orion was chosen as the API solution for its ability to quickly generate RESTful endpoints with built-in features like filtering, sorting, and relationship handling. While other solutions like Spatie Laravel Data or Scramble could provide additional TypeScript/OpenAPI capabilities, Orion's simplicity and integration with Laravel's native features made it the suitable choice for this phase.
+
+5. Verify Authentication System:
+   - [ ] Add visibility to frontend for errors in login/register
+   - [ ] Test login/register end-to-end via browser
+   - [ ] Test role/permission inclusion in auth response via alert on browser page
 
 ### 6.3 Frontend Implementation Steps
 

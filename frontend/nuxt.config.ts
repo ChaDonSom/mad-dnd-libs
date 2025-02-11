@@ -1,4 +1,6 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devtools: { enabled: true },
   css: ["vuetify/lib/styles/main.css", "@mdi/font/css/materialdesignicons.css"],
   plugins: [],
   components: true,
@@ -9,7 +11,12 @@ export default defineNuxtConfig({
     "@formkit/auto-animate",
     "vuetify-nuxt-module",
   ],
-
+  runtimeConfig: {
+    public: {
+      nodeEnv: process.env.NODE_ENV || 'development',
+      apiUrl: process.env.NUXT_PUBLIC_API_URL || 'http://localhost:8000'
+    }
+  },
   vuetify: {
     moduleOptions: {
       styles: true,
