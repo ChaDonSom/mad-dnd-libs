@@ -96,64 +96,64 @@ If they decline, they can still access their previous games via the temporary ID
 
 1. Create Models:
 
-   - Role model with relationships to permissions and users
-   - Permission model with relationship to roles
-   - Update User model with role relationships
+   - [x] Role model with relationships to permissions and users
+   - [x] Permission model with relationship to roles
+   - [x] Update User model with role relationships
 
 2. Create Middleware:
 
-   - Role-based middleware for route protection
-   - Permission-based middleware for granular control
+   - [ ] Role-based middleware for route protection
+   - [ ] Permission-based middleware for granular control
 
 3. Update Authentication System:
 
-   - Modify registration to assign default role
-   - Include roles/permissions in auth tokens
-   - Add role checks to existing endpoints
+   - [ ] Modify registration to assign default role
+   - [ ] Include roles/permissions in auth tokens
+   - [ ] Add role checks to existing endpoints
 
 4. Create Role Management API:
-   - CRUD endpoints for roles (admin only)
-   - CRUD endpoints for permissions (admin only)
-   - CRUD to be implemented by Laravel Orion
-   - Endpoints for role assignment
+   - [ ] CRUD endpoints for roles (admin only)
+   - [ ] CRUD endpoints for permissions (admin only)
+   - [ ] CRUD to be implemented by Laravel Orion
+   - [ ] Endpoints for role assignment
 
 ### 6.3 Frontend Implementation Steps
 
 1. Update Auth Store:
 
-   - Add role/permission state management
-   - Add helper methods for permission checking
+   - [ ] Add role/permission state management
+   - [ ] Add helper methods for permission checking
 
 2. Add Role-based UI Elements:
 
-   - Show/hide components based on permissions
-   - Add admin interface for role management
-   - Update navigation based on user role
+   - [ ] Show/hide components based on permissions
+   - [ ] Add admin interface for role management
+   - [ ] Update navigation based on user role
 
 3. Game Room Updates:
-   - Implement host controls
-   - Add player management interface
-   - Add role transfer functionality
+   - [ ] Implement host controls
+   - [ ] Add player management interface
+   - [ ] Add role transfer functionality
 
 ### 6.4 Testing Strategy
 
 1. Unit Tests:
 
-   - Role and permission model tests
-   - Middleware tests
-   - Authorization helper tests
+   - [ ] Role and permission model tests
+   - [ ] Middleware tests
+   - [ ] Authorization helper tests
 
 2. Integration Tests:
 
-   - Role-based access control
-   - Permission inheritance
-   - Role assignment flows
+   - [ ] Role-based access control
+   - [ ] Permission inheritance
+   - [ ] Role assignment flows
 
 3. E2E Tests:
 
-   - Complete user journeys for each role
-   - Role transition scenarios
-   - Permission boundary cases
+   - [ ] Complete user journeys for each role
+   - [ ] Role transition scenarios
+   - [ ] Permission boundary cases
 
 4. Testing Tools:
 

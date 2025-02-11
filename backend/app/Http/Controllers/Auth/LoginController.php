@@ -3,38 +3,52 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+        $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
         ]);
 
-        if (Auth::attempt($credentials)) {
-            /** @var \App\Models\User $user */
-            $user = Auth::user();
-            $token = $user->createToken('auth-token')->plainTextToken;
+        $user = User::where('email', $request->email)->first();
 
+        if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([
-                'token' => $token,
-                'user' => $user,
-                'message' => 'Login successful'
-            ], 200);
+                'message' => 'Invalid credentials'
+            ], 401);
         }
 
+        // Revoke existing tokens
+        $user->tokens()->delete();
+
+        // Get all permissions from user's roles
+        $abilities = $user->roles()
+            ->with('permissions')
+            ->get()
+            ->pluck('permissions')
+            ->flatten()
+            ->pluck('slug')
+            ->unique()
+            ->toArray();
+
+        $token = $user->createToken('auth-token', $abilities);
+
         return response()->json([
-            'message' => 'Invalid credentials'
-        ], 401);
+            'token' => $token->plainTextToken,
+            'user' => $user->load('roles.permissions'),
+        ]);
     }
 
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
-        return response()->json(['message' => 'Logged out']);
+        return response()->json(['message' => 'Logged out successfully']);
     }
 }
