@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const auth = useAuthStore();
 const router = useRouter();
+const config = useRuntimeConfig();
 
 const name = ref("");
 const email = ref("");
@@ -9,6 +10,20 @@ const passwordConfirmation = ref("");
 const loading = ref(false);
 const errorMessage = ref("");
 const validationErrors = ref<Record<string, string[]>>({});
+
+function autoFillForm() {
+  const firstNames = ['Alex', 'Jordan', 'Taylor', 'Morgan', 'Sam', 'Casey', 'Riley', 'Quinn', 'Avery', 'Jamie'];
+  const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez'];
+  
+  const randomFirst = firstNames[Math.floor(Math.random() * firstNames.length)];
+  const randomLast = lastNames[Math.floor(Math.random() * lastNames.length)];
+  const fullName = `${randomFirst} ${randomLast}`;
+  
+  name.value = fullName;
+  email.value = `${randomFirst.toLowerCase()}.${randomLast.toLowerCase()}${Math.floor(Math.random() * 1000)}@example.com`;
+  password.value = "password123";
+  passwordConfirmation.value = "password123";
+}
 
 async function handleRegister() {
   loading.value = true;
@@ -91,6 +106,16 @@ async function handleRegister() {
           :loading="loading"
         >
           Register
+        </VBtn>
+        <VBtn
+          v-if="config.public.nodeEnv === 'development'"
+          color="secondary"
+          variant="text"
+          block
+          class="mt-2"
+          @click="autoFillForm"
+        >
+          Auto-fill test data
         </VBtn>
       </VForm>
       <div class="text-center mt-4">
