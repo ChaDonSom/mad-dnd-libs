@@ -1,5 +1,5 @@
 <template>
-  <pre v-if="dev" class="debug-permissions">
+  <pre v-if="dev">
     <code>{{ permissions }}</code>
   </pre>
 </template>
@@ -14,13 +14,3 @@ const permissions = computed(() =>
 );
 const dev = import.meta.env.DEV;
 </script>
-
-<style scoped>
-.debug-permissions {
-  background: #f5f5f5;
-  padding: 1rem;
-  border-radius: 4px;
-  margin: 1rem 0;
-  font-size: 0.875rem;
-}
-</style>
