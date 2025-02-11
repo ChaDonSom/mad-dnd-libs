@@ -102,8 +102,8 @@ If they decline, they can still access their previous games via the temporary ID
 
 2. Create Middleware:
 
-   - [ ] Role-based middleware for route protection
-   - [ ] Permission-based middleware for granular control
+   - [x] Role-based middleware for route protection
+   - [x] Permission-based middleware for granular control
 
 3. Update Authentication System:
 
