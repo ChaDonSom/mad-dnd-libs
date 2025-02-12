@@ -4,7 +4,14 @@ interface User {
   id: number;
   name: string;
   email: string;
-  roles?: string[];
+  roles?: {
+    id: number;
+    name: string;
+    permissions?: {
+      id: number;
+      name: string;
+    }[];
+  }[];
   permissions?: string[];
 }
 
@@ -30,7 +37,7 @@ export const useAuthStore = defineStore("auth", {
     },
     
     hasRole(): (role: string) => boolean {
-      return (role: string) => !!this.user?.roles?.includes(role);
+      return (role: string) => !!this.user?.roles?.some(r => r.name === role);
     },
     
     hasPermission(): (permission: string) => boolean {

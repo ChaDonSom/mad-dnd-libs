@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import PermissionDebug from "~/src/components/PermissionDebug.vue";
-
-const auth = useAuthStore();
+const auth = useAuthStore()
 </script>
 
 <template>
@@ -27,7 +25,6 @@ const auth = useAuthStore();
             Register
           </VBtn>
         </div>
-        <PermissionDebug />
       </VCol>
     </VRow>
   </VContainer>

@@ -125,8 +125,8 @@ If they decline, they can still access their previous games via the temporary ID
      - [x] Fix API URL not in env
      - [x] Fix debug component no dark mode
      - [x] Add quick testing register data button
-   - [ ] Test login/register end-to-end via browser
-   - [ ] Test role/permission inclusion in auth response via alert on browser page
+   - [x] Test login/register end-to-end via browser
+   - [x] Test role/permission inclusion in auth response via alert on browser page
 
 ### 6.3 Frontend Implementation Steps
 

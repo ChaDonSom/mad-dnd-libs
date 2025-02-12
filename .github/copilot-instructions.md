@@ -12,6 +12,11 @@ See [readme](README.md) for more information on how to use this repository.
 
 ### Conventions
 
+- **TS**
+
+  - Use TypeScript for Vue components
+  - No semi-colons where possible
+
 - **Vue 3 Composition API:**
 
   - TS for Vue components
