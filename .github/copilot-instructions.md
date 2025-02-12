@@ -40,3 +40,9 @@ See [readme](README.md) for more information on how to use this repository.
     - Organize components into folders when more than 3-4 components with shared general names exist
   - For this specific project, reference the [readme](../../README.md), [requirements](../../docs/MadDndLibs_Requirements.md), and [design](../../docs/Implementation-Plan.md) documents, which have further links to more documents, for work in progress
   - Try to work from a md document with a checklist, if possible, to ensure all tasks are completed. The checklist document should link back to the implementation plan or a checklist/implementation-plan document that is directly or indirectly linked to it. We just want to ensure the document is linked to the implementation plan in some way. Also there should be links coming down to your checklist document from above as well. Update the checklist document as you go along. This will help us keep track of progress and ensure we are on the right track.
+- Keep files and documentation concise:
+  - Limit paragraphs to 3-5 sentences
+  - Keep each bullet point to 1 line
+  - Aim for total document length under 1000 words
+  - Break longer documents into separate linked files
+  - Remove redundant or outdated information
