@@ -31,7 +31,7 @@ export const useAuthStore = defineStore("auth", {
   state: (): AuthState => ({
     user: null,
     token: null,
-    cachedPermissions: null,
+    cachedPermissions: null
   }),
 
   getters: {
@@ -77,9 +77,36 @@ export const useAuthStore = defineStore("auth", {
   },
 
   actions: {
-    // Reset cached permissions when user state changes
-    resetCache() {
-      this.cachedPermissions = null;
+    saveToStorage() {
+      // Only run on client-side
+      if (import.meta.client) {
+        if (this.user) {
+          localStorage.setItem('auth_user', JSON.stringify(this.user))
+        } else {
+          localStorage.removeItem('auth_user')
+        }
+        
+        if (this.token) {
+          localStorage.setItem('auth_token', this.token)
+        } else {
+          localStorage.removeItem('auth_token')
+        }
+      }
+    },
+
+    initializeFromStorage() {
+      // Only run on client-side
+      if (import.meta.client) {
+        const savedUser = localStorage.getItem('auth_user')
+        const savedToken = localStorage.getItem('auth_token')
+        
+        if (savedUser) {
+          this.user = JSON.parse(savedUser)
+        }
+        if (savedToken) {
+          this.token = savedToken
+        }
+      }
     },
 
     async login(email: string, password: string): Promise<AuthError | true> {
@@ -104,6 +131,7 @@ export const useAuthStore = defineStore("auth", {
         this.user = data.user;
         this.token = data.token;
         this.resetCache();
+        this.saveToStorage();
         return true;
       } catch (error) {
         console.error("Login error:", error);
@@ -143,6 +171,7 @@ export const useAuthStore = defineStore("auth", {
         this.user = data.user;
         this.token = data.token;
         this.resetCache();
+        this.saveToStorage();
         return true;
       } catch (error) {
         console.error("Registration error:", error);
@@ -166,11 +195,16 @@ export const useAuthStore = defineStore("auth", {
         this.user = null;
         this.token = null;
         this.resetCache();
+        this.saveToStorage();
         return true;
       } catch (error) {
         console.error("Logout error:", error);
         return false;
       }
+    },
+
+    resetCache() {
+      this.cachedPermissions = null;
     }
   },
 });
