@@ -19,12 +19,13 @@ const auth = useAuthStore()
 async function fetchPermissions() {
   loading.value = true
   try {
-    const response = await fetch(`${config.public.apiUrl}/api/permissions`, {
+    const response = await fetch(`${config.public.apiUrl}/api/permissions?include=roles`, {
       headers: {
         Authorization: `Bearer ${auth.token}`,
       }
     })
-    permissions.value = await response.json()
+    const json = await response.json()
+    permissions.value = json.data
   } catch (error) {
     console.error('Error fetching permissions:', error)
   } finally {

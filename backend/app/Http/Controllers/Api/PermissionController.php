@@ -8,4 +8,9 @@ use Orion\Http\Controllers\Controller;
 class PermissionController extends Controller
 {
     protected $model = Permission::class;
+
+    public function includes(): array
+    {
+        return ['roles'];
+    }
 }

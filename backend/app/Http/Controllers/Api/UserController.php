@@ -9,6 +9,11 @@ class UserController extends Controller
 {
     protected $model = User::class;
 
+    public function includes(): array
+    {
+        return ['roles', 'roles.permissions'];
+    }
+
     protected function beforeSave($request, $user)
     {
         if ($request->has('roles')) {

@@ -29,7 +29,8 @@ async function fetchRoles() {
         Authorization: `Bearer ${useAuthStore().token}`,
       }
     })
-    roles.value = await response.json()
+    const json = await response.json()
+    roles.value = json.data
   } catch (error) {
     console.error('Error fetching roles:', error)
   } finally {

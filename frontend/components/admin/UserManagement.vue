@@ -32,7 +32,8 @@ async function fetchUsers() {
         Authorization: `Bearer ${auth.token}`,
       }
     })
-    users.value = await response.json()
+    const json = await response.json()
+    users.value = json.data
   } catch (error) {
     console.error('Error fetching users:', error)
   } finally {
