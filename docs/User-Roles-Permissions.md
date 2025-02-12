@@ -120,7 +120,11 @@ If they decline, they can still access their previous games via the temporary ID
 > **Note:** Laravel Orion was chosen as the API solution for its ability to quickly generate RESTful endpoints with built-in features like filtering, sorting, and relationship handling. While other solutions like Spatie Laravel Data or Scramble could provide additional TypeScript/OpenAPI capabilities, Orion's simplicity and integration with Laravel's native features made it the suitable choice for this phase.
 
 5. Verify Authentication System:
-   - [ ] Add visibility to frontend for errors in login/register
+   - [x] Add visibility to frontend for errors in login/register
+     - [x] Add error handling for login/register
+     - [x] Fix API URL not in env
+     - [x] Fix debug component no dark mode
+     - [x] Add quick testing register data button
    - [ ] Test login/register end-to-end via browser
    - [ ] Test role/permission inclusion in auth response via alert on browser page
 
