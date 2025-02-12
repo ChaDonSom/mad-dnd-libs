@@ -7,17 +7,19 @@ interface User {
   roles?: {
     id: number;
     name: string;
+    slug: string;
     permissions?: {
       id: number;
       name: string;
+      slug: string;
     }[];
   }[];
-  permissions?: string[];
 }
 
 interface AuthState {
   user: User | null;
   token: string | null;
+  cachedPermissions: string[] | null;
 }
 
 interface AuthError {
@@ -29,6 +31,7 @@ export const useAuthStore = defineStore("auth", {
   state: (): AuthState => ({
     user: null,
     token: null,
+    cachedPermissions: null,
   }),
 
   getters: {
@@ -36,16 +39,49 @@ export const useAuthStore = defineStore("auth", {
       return !!this.token;
     },
     
+    allPermissions(): string[] {
+      if (this.cachedPermissions) return this.cachedPermissions;
+      
+      const permissions = this.user?.roles?.flatMap(role => 
+        role.permissions?.map(permission => permission.slug) ?? []
+      ) ?? [];
+      
+      this.cachedPermissions = [...new Set(permissions)];
+      return this.cachedPermissions;
+    },
+
+    roles(): string[] {
+      return this.user?.roles?.map(role => role.slug) ?? [];
+    },
+    
     hasRole(): (role: string) => boolean {
-      return (role: string) => !!this.user?.roles?.some(r => r.name === role);
+      return (role: string) => this.roles.includes(role);
     },
     
     hasPermission(): (permission: string) => boolean {
-      return (permission: string) => !!this.user?.permissions?.includes(permission);
+      return (permission: string) => this.allPermissions.includes(permission);
+    },
+
+    // Convenience getters for common role checks
+    isAdmin(): boolean {
+      return this.hasRole('admin');
+    },
+
+    isHost(): boolean {
+      return this.hasRole('host');
+    },
+
+    isPlayer(): boolean {
+      return this.hasRole('player');
     }
   },
 
   actions: {
+    // Reset cached permissions when user state changes
+    resetCache() {
+      this.cachedPermissions = null;
+    },
+
     async login(email: string, password: string): Promise<AuthError | true> {
       const config = useRuntimeConfig();
       try {
@@ -67,6 +103,7 @@ export const useAuthStore = defineStore("auth", {
 
         this.user = data.user;
         this.token = data.token;
+        this.resetCache();
         return true;
       } catch (error) {
         console.error("Login error:", error);
@@ -105,6 +142,7 @@ export const useAuthStore = defineStore("auth", {
 
         this.user = data.user;
         this.token = data.token;
+        this.resetCache();
         return true;
       } catch (error) {
         console.error("Registration error:", error);
@@ -127,6 +165,7 @@ export const useAuthStore = defineStore("auth", {
 
         this.user = null;
         this.token = null;
+        this.resetCache();
         return true;
       } catch (error) {
         console.error("Logout error:", error);

@@ -3,7 +3,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["vuetify/lib/styles/main.css", "@mdi/font/css/materialdesignicons.css"],
   plugins: [],
-  components: true,
+  components: {
+    dirs: [
+      {
+        path: '~/components',
+        pathPrefix: false,
+      },
+    ],
+  },
   modules: [
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
