@@ -8,19 +8,11 @@ interface User {
   roles: {
     id: number
     name: string
-    permissions?: {
-      id: number
-      name: string
-      slug: string
-    }[]
   }[]
 }
 
 const users = ref<User[]>([])
 const loading = ref(false)
-const editingUser = ref<User | null>(null)
-const dialog = ref(false)
-
 const config = useRuntimeConfig()
 const auth = useAuthStore()
 
@@ -64,18 +56,8 @@ onMounted(() => {
 
 <template>
   <div>
-    <div class="d-flex align-center mb-4">
-      <h2 class="text-h5 mr-4">Users</h2>
-      <VSpacer />
-      <VBtn
-        color="primary"
-        prepend-icon="mdi-plus"
-        @click="dialog = true"
-      >
-        Add User
-      </VBtn>
-    </div>
-
+    <h2 class="text-h5 mb-4">Users</h2>
+    
     <VTable v-if="users.length">
       <thead>
         <tr>
@@ -101,12 +83,7 @@ onMounted(() => {
           </td>
           <td>
             <VBtn
-              icon="mdi-pencil"
-              size="small"
-              variant="text"
-              @click="editingUser = user; dialog = true"
-            />
-            <VBtn
+              v-if="user.id !== auth.user?.id"
               icon="mdi-delete"
               size="small"
               variant="text"
@@ -119,23 +96,7 @@ onMounted(() => {
     </VTable>
     <VSkeletonLoader v-else-if="loading" type="table" />
     <VAlert v-else type="info" variant="tonal">
-      No users found. Create one to get started.
+      No users found.
     </VAlert>
-
-    <!-- User Edit Dialog -->
-    <VDialog v-model="dialog" max-width="500px">
-      <VCard>
-        <VCardTitle>
-          {{ editingUser ? 'Edit User' : 'New User' }}
-        </VCardTitle>
-        <VCardText>
-          <UserForm
-            :user="editingUser"
-            @saved="dialog = false; fetchUsers()"
-            @cancel="dialog = false"
-          />
-        </VCardText>
-      </VCard>
-    </VDialog>
   </div>
 </template>

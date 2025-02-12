@@ -40,9 +40,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <div class="d-flex align-center mb-4">
-      <h2 class="text-h5">Permissions</h2>
-    </div>
+    <h2 class="text-h5 mb-4">Permissions</h2>
 
     <VTable v-if="permissions.length">
       <thead>

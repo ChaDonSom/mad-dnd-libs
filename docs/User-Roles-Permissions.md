@@ -138,7 +138,7 @@ If they decline, they can still access their previous games via the temporary ID
 2. Add Role-based UI Elements:
 
    - [x] Show/hide components based on permissions
-   - [x] Add admin interface for role management
+   - [x] Add admin interface for role inspection
    - [x] Update navigation based on user role
 
 3. Game Room Updates:

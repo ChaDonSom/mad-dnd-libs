@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useAuthStore } from '@/stores/auth'
 
 interface Role {
   id: number
@@ -16,8 +15,6 @@ interface Permission {
 
 const roles = ref<Role[]>([])
 const loading = ref(false)
-const editingRole = ref<Role | null>(null)
-const dialog = ref(false)
 
 const config = useRuntimeConfig()
 
@@ -38,22 +35,6 @@ async function fetchRoles() {
   }
 }
 
-async function deleteRole(id: number) {
-  if (!confirm('Are you sure you want to delete this role?')) return
-
-  try {
-    await fetch(`${config.public.apiUrl}/api/roles/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${useAuthStore().token}`,
-      }
-    })
-    fetchRoles()
-  } catch (error) {
-    console.error('Error deleting role:', error)
-  }
-}
-
 onMounted(() => {
   fetchRoles()
 })
@@ -61,24 +42,13 @@ onMounted(() => {
 
 <template>
   <div>
-    <div class="d-flex align-center mb-4">
-      <h2 class="text-h5 mr-4">Roles</h2>
-      <VSpacer />
-      <VBtn
-        color="primary"
-        prepend-icon="mdi-plus"
-        @click="dialog = true"
-      >
-        Add Role
-      </VBtn>
-    </div>
+    <h2 class="text-h5 mb-4">Roles</h2>
 
     <VTable v-if="roles.length">
       <thead>
         <tr>
           <th>Name</th>
           <th>Permissions</th>
-          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -94,43 +64,12 @@ onMounted(() => {
               {{ permission.name }}
             </VChip>
           </td>
-          <td>
-            <VBtn
-              icon="mdi-pencil"
-              size="small"
-              variant="text"
-              @click="editingRole = role; dialog = true"
-            />
-            <VBtn
-              icon="mdi-delete"
-              size="small"
-              variant="text"
-              color="error"
-              @click="deleteRole(role.id)"
-            />
-          </td>
         </tr>
       </tbody>
     </VTable>
     <VSkeletonLoader v-else-if="loading" type="table" />
     <VAlert v-else type="info" variant="tonal">
-      No roles found. Create one to get started.
+      No roles found.
     </VAlert>
-
-    <!-- Role Edit Dialog -->
-    <VDialog v-model="dialog" max-width="500px">
-      <VCard>
-        <VCardTitle>
-          {{ editingRole ? 'Edit Role' : 'New Role' }}
-        </VCardTitle>
-        <VCardText>
-          <RoleForm
-            :role="editingRole"
-            @saved="dialog = false; fetchRoles()"
-            @cancel="dialog = false"
-          />
-        </VCardText>
-      </VCard>
-    </VDialog>
   </div>
 </template>
