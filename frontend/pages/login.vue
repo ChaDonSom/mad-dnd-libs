@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const auth = useAuthStore();
 const router = useRouter();
+const route = useRoute();
 
 const email = ref("");
 const password = ref("");
@@ -17,7 +18,8 @@ async function handleLogin() {
   loading.value = false;
 
   if (result === true) {
-    router.push("/");
+    const redirect = route.query.redirect as string;
+    router.push(redirect || "/");
   } else {
     errorMessage.value = result.message;
     if (result.errors) {
