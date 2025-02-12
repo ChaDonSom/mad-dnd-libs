@@ -132,14 +132,14 @@ If they decline, they can still access their previous games via the temporary ID
 
 1. Update Auth Store:
 
-   - [ ] Add role/permission state management
-   - [ ] Add helper methods for permission checking
+   - [x] Add role/permission state management
+   - [x] Add helper methods for permission checking
 
 2. Add Role-based UI Elements:
 
-   - [ ] Show/hide components based on permissions
-   - [ ] Add admin interface for role management
-   - [ ] Update navigation based on user role
+   - [x] Show/hide components based on permissions
+   - [x] Add admin interface for role management
+   - [x] Update navigation based on user role
 
 3. Game Room Updates:
    - [ ] Implement host controls
