@@ -27,7 +27,7 @@ const auth = useAuthStore()
 async function fetchUsers() {
   loading.value = true
   try {
-    const response = await fetch(`${config.public.apiUrl}/api/users`, {
+    const response = await fetch(`${config.public.apiUrl}/api/users?include=roles`, {
       headers: {
         Authorization: `Bearer ${auth.token}`,
       }

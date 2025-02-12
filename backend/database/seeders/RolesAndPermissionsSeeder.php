@@ -29,26 +29,30 @@ class RolesAndPermissionsSeeder extends Seeder
         ];
 
         foreach ($permissions as $permission) {
-            Permission::create($permission);
+            Permission::firstOrCreate(['slug' => $permission['slug']], $permission);
         }
 
         // Create roles and assign permissions
-        $guest = Role::create([
-            'name' => 'Guest',
-            'slug' => 'guest',
-            'description' => 'User who has not logged in'
-        ]);
-        $guest->permissions()->attach(Permission::whereIn('slug', [
+        $guest = Role::firstOrCreate(
+            ['slug' => 'guest'],
+            [
+                'name' => 'Guest',
+                'description' => 'User who has not logged in'
+            ]
+        );
+        $guest->permissions()->sync(Permission::whereIn('slug', [
             'view_public_content',
             'join_game'
         ])->get());
 
-        $player = Role::create([
-            'name' => 'Player',
-            'slug' => 'player',
-            'description' => 'Registered player user'
-        ]);
-        $player->permissions()->attach(Permission::whereIn('slug', [
+        $player = Role::firstOrCreate(
+            ['slug' => 'player'],
+            [
+                'name' => 'Player',
+                'description' => 'Registered player user'
+            ]
+        );
+        $player->permissions()->sync(Permission::whereIn('slug', [
             'view_public_content',
             'join_game',
             'view_game_content',
@@ -57,23 +61,27 @@ class RolesAndPermissionsSeeder extends Seeder
             'view_post_game_summary'
         ])->get());
 
-        $host = Role::create([
-            'name' => 'Host',
-            'slug' => 'host',
-            'description' => 'Game host user'
-        ]);
-        $host->permissions()->attach(Permission::whereIn('slug', [
+        $host = Role::firstOrCreate(
+            ['slug' => 'host'],
+            [
+                'name' => 'Host',
+                'description' => 'Game host user'
+            ]
+        );
+        $host->permissions()->sync(Permission::whereIn('slug', [
             'host_game',
             'configure_game',
             'manage_players',
             'assign_host_privileges'
         ])->get());
 
-        $admin = Role::create([
-            'name' => 'Admin',
-            'slug' => 'admin',
-            'description' => 'System administrator'
-        ]);
-        $admin->permissions()->attach(Permission::all());
+        $admin = Role::firstOrCreate(
+            ['slug' => 'admin'],
+            [
+                'name' => 'Admin',
+                'description' => 'System administrator'
+            ]
+        );
+        $admin->permissions()->sync(Permission::all());
     }
 }

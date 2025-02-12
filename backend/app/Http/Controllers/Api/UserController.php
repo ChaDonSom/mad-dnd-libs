@@ -3,15 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
+use Orion\Http\Controllers\Controller;
 
-class UserController extends ApiController
+class UserController extends Controller
 {
     protected $model = User::class;
-
-    public function includes(): array
-    {
-        return ['roles', 'permissions'];
-    }
 
     protected function beforeSave($request, $user)
     {

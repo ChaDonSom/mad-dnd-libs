@@ -24,7 +24,7 @@ const config = useRuntimeConfig()
 async function fetchRoles() {
   loading.value = true
   try {
-    const response = await fetch(`${config.public.apiUrl}/api/roles`, {
+    const response = await fetch(`${config.public.apiUrl}/api/roles?include=permissions`, {
       headers: {
         Authorization: `Bearer ${useAuthStore().token}`,
       }
