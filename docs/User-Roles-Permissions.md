@@ -141,35 +141,36 @@ If they decline, they can still access their previous games via the temporary ID
    - [x] Add admin interface for role inspection
    - [x] Update navigation based on user role
 
-3. Game Room Updates:
-   - [ ] Implement host controls
-   - [ ] Add player management interface
-   - [ ] Add role transfer functionality
+3. Game Room Updates: **[Deferred to Step 2 - Game Room System]**
+   - [ ] Implement host controls (requires Game Room system)
+   - [ ] Add player management interface (requires Game Room system)
+   - [ ] Add role transfer functionality (requires Game Room system)
 
 ### 6.4 Testing Strategy
 
-1. Unit Tests:
+1. Unit Tests: **[Basic test created, expandable]**
 
-   - [ ] Role and permission model tests
-   - [ ] Middleware tests
-   - [ ] Authorization helper tests
+   - [x] Basic role and permission model tests (UserRolePermissionTest.php)
+   - [ ] Middleware tests (deferred)
+   - [ ] Authorization helper tests (deferred)
 
-2. Integration Tests:
+2. Integration Tests: **[Deferred to Game Room System]**
 
-   - [ ] Role-based access control
-   - [ ] Permission inheritance
-   - [ ] Role assignment flows
+   - [ ] Role-based access control (requires game rooms)
+   - [ ] Permission inheritance (requires game rooms)
+   - [ ] Role assignment flows (requires game rooms)
 
-3. E2E Tests:
+3. E2E Tests: **[Frontend infrastructure ready]**
 
-   - [ ] Complete user journeys for each role
-   - [ ] Role transition scenarios
-   - [ ] Permission boundary cases
+   - [x] Frontend role-based UI components working
+   - [x] DevRoleSwitcher for development testing
+   - [x] AuthDebug component for state inspection
+   - [ ] Complete user journeys (requires backend integration)
 
 4. Testing Tools:
 
-   - Laravel Dusk for E2E testing
-   - Pest for unit and integration tests
+   - Laravel Dusk for E2E testing (ready)
+   - Pest for unit and integration tests (ready)
 
 ### 6.5 Deployment Plan
 
