@@ -8,54 +8,66 @@ Mad DnD Libs: The Chaotic Quest is a multiplayer web-based party game where play
 
 ### Prerequisites
 
-- Node.js (for frontend)
-- PHP (for backend)
-- Composer (for backend)
-- MySQL (for database)
+- Node.js 18+ (for frontend)
+- PHP 8.1+ (for backend)
+- Composer (for backend dependencies)
 
-### Installation
+### Quick Setup
 
-1. **Clone the repository:**
+Run the automated setup script:
 
-   git clone https://github.com/yourusername/mad-dnd-libs.git
+```bash
+git clone https://github.com/ChaDonSom/mad-dnd-libs.git
+cd mad-dnd-libs
+./setup.sh
+```
 
-2. **Navigate to the project directory:**
+### Manual Setup
 
-   cd mad-dnd-libs
+If you prefer to set up manually:
 
-3. **Set up the frontend:**
-
-   - Navigate to the frontend directory:
-     cd frontend
-   - Install dependencies:
-     npm install
-
-4. **Set up the backend:**
-
-   - Navigate to the backend directory:
-     cd ../backend
-   - Install dependencies:
-     composer install
-
-5. **Configure the database:**
-
-   - Create a new MySQL database for the project.
-   - Update the `.env` file in the backend directory with your database credentials.
-
-6. **Run the migrations:**
-
+1. **Backend Setup:**
+   ```bash
+   cd backend
+   composer install
+   cp .env.example .env
+   php artisan key:generate
+   touch database/database.sqlite
    php artisan migrate
+   php artisan db:seed
+   ```
+
+2. **Frontend Setup:**
+   ```bash
+   cd frontend
+   npm install
+   ```
 
 ### Running the Application
 
-- **Frontend:**
+Start both servers in separate terminals:
 
-  - Start the development server:
-    npm run dev
+1. **Backend:**
+   ```bash
+   cd backend
+   php artisan serve
+   ```
 
-- **Backend:**
-  - Start the Laravel server:
-    php artisan serve
+2. **Frontend:**
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+Then visit:
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://localhost:8000
+
+### First Steps
+
+1. Visit http://localhost:3000/register to create an account
+2. Use the "Auto-fill test data" button for quick testing
+3. Start exploring the game features!
 
 ## Gameplay
 
